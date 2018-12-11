@@ -200,6 +200,39 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void negate() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(255 - (pixelObj.getRed()));
+				pixelObj.setBlue(255 - (pixelObj.getBlue()));
+				pixelObj.setGreen(255 - (pixelObj.getGreen()));
+
+			}
+		}
+	}
+
+	public void grayScale() {
+		Pixel[][] pixels = this.getPixels2D();
+
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				double avg = ( pixelObj.getRed() + pixelObj.getBlue() + pixelObj.getGreen()) / 3;
+				pixelObj.setRed((int)avg);
+				pixelObj.setGreen((int)avg);
+				pixelObj.setBlue((int)avg);
+			}
+		}
+	}
+
+	public void fixUnderwater() {
+		Pixel[][] pixels = this.getPixels2D();
+		for (Pixel[] rowArray : pixels) {
+			for (Pixel pixelObj : rowArray) {
+				pixelObj.setRed(pixelObj.getRed() * 7);
+			}
+		}
+	}
 	/*
 	 * Main method for testing - each class in Java can have a main method
 	 */
