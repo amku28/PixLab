@@ -89,10 +89,37 @@ public class IntArrayWorker {
 		int count = 0;
 		for (int row = 0; row < matrix.length; row++) {
 			for (int col = 0; col < matrix[row].length; col++) {
-				count += 1;
+				if (matrix[row][col] == num) {
+					count += 1;
+				}
 			}
 		}
 
 		return count;
+	}
+
+	public int getLargest() {
+		int largest = matrix[0][0];;
+
+		for (int row = 0; row < matrix.length; row++) {
+			
+			for (int col = 0; col < matrix[row].length; col++) {
+				if (matrix[row][col] > largest) {
+					largest = matrix[row][col];
+				}
+			}
+		}
+
+		return largest;
+	}
+
+	public int getColTotal(int col) {
+		int sum = 0;
+
+		for (int row = 0; row < matrix.length; row++) {
+			sum += matrix[row][col];
+		}
+
+		return sum;
 	}
 }
