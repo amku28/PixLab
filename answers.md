@@ -1,15 +1,8 @@
-1. Open Picture.java and look for the method getPixels2D. Is is there?
-    No.
-2. Open SimplePicture.java and look for the method getPixels2D. Is it there?
-    Yes.
-3. Does the folling code compile? DigitalPicture p = new DigitalPicture();
-    No.
-4. Assuming that a no-argument contructor exists for SimplePicture, would the following code compile? DigitalPicture p = new SimplePicture();
-    Yes.
-5. Assuming that a no-argument constructor exists for Picture, does the following code compile? DigitalPicture p = new Picture();
-    Yes.
-6. Assuming that a no-argument constructor exists for Picture, does the following code compile? SimplePicture p = new Picture();
-    Yes.
-7. Assuming that a no-argument constructor exists for Simple Picture, does the following code compile? Picture p = new SimplePicture();
-    No.
-
+1. How many times would the body of this nested for loop execute?
+for (int row = 7; row < 17; row ++) 
+    for (int col = 6; col < 15; col++)
+        90
+2. How many times would the body of this nesetd for loop execute?
+for (int row = 5; row<= 11; row++)
+    for (int col = 3; col <= 18; col++)
+        90
