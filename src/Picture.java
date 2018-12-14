@@ -265,6 +265,22 @@ public class Picture extends SimplePicture {
 		}
 	}
 
+	public void copy2(Picture fromPic, int startRow, int endRow, int startCol, int endCol) {
+		Pixel fromPixel = null;
+		Pixel toPixel = null;
+		Pixel[][] toPixels = this.getPixels2D();
+		Pixel[][] fromPixels = fromPic.getPixels2D();
+		for (int fromRow = startRow, toRow = 0; fromRow < endRow
+				&& toRow < toPixels.length; fromRow++, toRow++) {
+			for (int fromCol = startCol, toCol = 0; fromCol < endCol
+					&& toCol < toPixels[0].length; fromCol++, toCol++) {
+				fromPixel = fromPixels[fromRow][fromCol];
+				toPixel = toPixels[toRow][toCol];
+				toPixel.setColor(fromPixel.getColor());
+			}
+		}
+	}
+
 	/** Method to create a collage of several pictures */
 	public void createCollage() {
 		Picture flower1 = new Picture("flower1.jpg");
@@ -279,6 +295,18 @@ public class Picture extends SimplePicture {
 		this.copy(flower2, 500, 0);
 		this.mirrorVertical();
 		this.write("collage.jpg");
+	}
+
+	public void myCollage() {
+		Picture snowman = new Picture("snowman.jpg");
+		this.copy2(snowman, 79, 297, 105, 293);
+		this.mirrorVertical();
+		this.copy2(snowman, 79, 297, 105, 293);
+		this.mirrorHorizontal();
+		Picture snowmanNoBlue = new Picture(snowman);
+		snowmanNoBlue.zeroBlue();
+		this.copy2(snowmanNoBlue, 79, 297, 105, 293);
+		this.write("myCollage.jpg");
 	}
 
 	/**

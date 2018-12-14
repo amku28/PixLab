@@ -42,6 +42,15 @@ public class PictureTester
     canvas.createCollage();
     canvas.explore();
   }
+
+  public static void testMyCollage() {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
+
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+  }
   
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
@@ -118,6 +127,13 @@ public class PictureTester
     gull.explore();
   }
 
+  public static void testCopy() {
+    Picture flower1 = new Picture("flower1.jpg");
+    flower1.explore();
+    flower1.copy2(flower1, 1, 32, 31, 66);
+    flower1.explore();
+  }
+
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -138,10 +154,11 @@ public class PictureTester
     // testMirrorHorizontalBotToTop();
     // testMirrorTemple();
     // testMirrorArms();
-    testMirrorGull();
+    // testMirrorGull();
     // testMirrorDiagonal();
     // testCollage();
     // testCopy();
+    testMyCollage();
     // testEdgeDetection();
     // testEdgeDetection2();
     // testChromakey();
