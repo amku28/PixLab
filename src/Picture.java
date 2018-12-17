@@ -316,21 +316,65 @@ public class Picture extends SimplePicture {
 	 *            the distance for finding edges
 	 */
 	public void edgeDetection(int edgeDist) {
+		// Pixel leftPixel = null;
+		// Pixel rightPixel = null;
+		// Pixel[][] pixels = this.getPixels2D();
+		// Color rightColor = null;
+		// // left to right comparison
+		// for (int row = 0; row < pixels.length; row++) {
+		// 	for (int col = 0; col < pixels[0].length - 1; col++) {
+		// 		leftPixel = pixels[row][col];
+		// 		rightPixel = pixels[row][col + 1];
+		// 		rightColor = rightPixel.getColor();
+		// 		if (leftPixel.colorDistance(rightColor) > edgeDist)
+		// 			leftPixel.setColor(Color.BLACK);
+		// 		else
+		// 			leftPixel.setColor(Color.WHITE);
+		// 	}
+		// }
+
+		// top to bottom comparison
+		Pixel topPixel = null;
+		Pixel bottomPixel = null;
+		Color bottomColor = null;
+		Pixel[][] pixels = this.getPixels2D();
+
+		for (int col = 0; col < pixels[0].length; col++) {
+			for (int row = 0; row < pixels.length - 1; row++) {
+				topPixel = pixels[row][col];
+				bottomPixel = pixels[row + 1][col];
+				bottomColor = bottomPixel.getColor();
+				if (topPixel.colorDistance(bottomColor) > edgeDist) {
+					topPixel.setColor(Color.BLACK);
+				} else {
+					topPixel.setColor(Color.WHITE);
+				}
+			}
+		}
+	}
+
+	public void edgeDetection2(int edgeDist) {
 		Pixel leftPixel = null;
 		Pixel rightPixel = null;
+		Pixel bottomPixel = null;
 		Pixel[][] pixels = this.getPixels2D();
+		Color bottomColor = null;
 		Color rightColor = null;
-		for (int row = 0; row < pixels.length; row++) {
+
+		for (int row = 0; row < pixels.length - 1; row++) {
 			for (int col = 0; col < pixels[0].length - 1; col++) {
 				leftPixel = pixels[row][col];
 				rightPixel = pixels[row][col + 1];
+				bottomPixel = pixels[row + 1][col];
+				bottomColor = bottomPixel.getColor();
 				rightColor = rightPixel.getColor();
-				if (leftPixel.colorDistance(rightColor) > edgeDist)
+				if (leftPixel.colorDistance(rightColor) > edgeDist && leftPixel.colorDistance(bottomColor) > edgeDist)
 					leftPixel.setColor(Color.BLACK);
 				else
 					leftPixel.setColor(Color.WHITE);
 			}
 		}
+
 	}
 
 	public void negate() {
@@ -366,6 +410,7 @@ public class Picture extends SimplePicture {
 			}
 		}
 	}
+
 	/*
 	 * Main method for testing - each class in Java can have a main method
 	 */

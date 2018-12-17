@@ -60,6 +60,13 @@ public class PictureTester
     swan.explore();
   }
 
+  public static void testEdgeDetection2() {
+    Picture swan = new Picture("swan.jpg");
+    swan.explore();
+    swan.edgeDetection2(10);
+    swan.explore();
+  }
+
   public static void testKeepOnlyBlue() {
     Picture beach = new Picture("beach.jpg");
     beach.zeroBlue();
@@ -158,9 +165,9 @@ public class PictureTester
     // testMirrorDiagonal();
     // testCollage();
     // testCopy();
-    testMyCollage();
-    // testEdgeDetection();
-    // testEdgeDetection2();
+    // testMyCollage();
+    testEdgeDetection();
+    testEdgeDetection2();
     // testChromakey();
     // testEncodeAndDecode();
     // testGetCountRedOverValue(250);
